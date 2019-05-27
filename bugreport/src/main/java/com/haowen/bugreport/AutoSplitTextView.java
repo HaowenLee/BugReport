@@ -42,9 +42,12 @@ public class AutoSplitTextView extends TextView {
     }
 
     private String autoSplitText(final TextView tv) {
-        final String rawText = tv.getText().toString(); //原始文本
-        final Paint tvPaint = tv.getPaint(); //paint，包含字体等信息
-        final float tvWidth = tv.getWidth() - tv.getPaddingLeft() - tv.getPaddingRight(); //控件可用宽度
+        //原始文本
+        final String rawText = tv.getText().toString();
+        //paint，包含字体等信息
+        final Paint tvPaint = tv.getPaint();
+        //控件可用宽度
+        final float tvWidth = tv.getWidth() - tv.getPaddingLeft() - tv.getPaddingRight();
 
         //将原始文本按行拆分
         String[] rawTextLines = rawText.replaceAll("\r", "").split("\n");
