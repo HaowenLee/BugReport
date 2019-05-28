@@ -1,11 +1,15 @@
-package com.haowen.bugreport;
+package com.haowen.bugreport.internal;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Process;
 import android.view.View;
 import android.widget.TextView;
+
+import com.haowen.bugreport.Config;
+import com.haowen.bugreport.R;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -18,8 +22,9 @@ public class BugReportActivity extends Activity {
     private TextView tvExceptionMessage;
     private TextView reportTextView;
 
-    static final String STACKTRACE = "bugreport.stacktrace";
+    public static final String STACKTRACE = "bugreport.stacktrace";
 
+    @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.bug_report_view);
@@ -29,7 +34,6 @@ public class BugReportActivity extends Activity {
         Throwable exception = (Throwable) getIntent().getSerializableExtra(STACKTRACE);
         final StringWriter stackTrace = new StringWriter();
         exception.printStackTrace(new PrintWriter(stackTrace));
-        System.err.println(stackTrace);
 
         tvThread.setText(getIntent().getStringExtra("Thread"));
         tvException.setText(AnalyseUtil.getCause(exception));
@@ -38,12 +42,13 @@ public class BugReportActivity extends Activity {
         reportTextView.setText(stackTrace.toString().replace(exception.getMessage(), ""));
 
         findViewById(R.id.send_report).setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 try {
                     Intent sendIntent = new Intent(Intent.ACTION_SEND);
-                    sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"haowenhello@gmail.com"});
+                    sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{Config.DEVELOPER_EMAIL});
                     sendIntent.putExtra(Intent.EXTRA_TEXT, tvExceptionMessage.getText().toString() + reportTextView.getText().toString());
-                    sendIntent.putExtra(Intent.EXTRA_SUBJECT, "BugReport " + "1.0.0" + " exception report");
+                    sendIntent.putExtra(Intent.EXTRA_SUBJECT, Utils.getAppInfo(BugReportActivity.this));
                     sendIntent.setType("message/rfc822");
                     startActivity(sendIntent);
                 } catch (ActivityNotFoundException e) {
@@ -55,6 +60,7 @@ public class BugReportActivity extends Activity {
         });
 
         findViewById(R.id.cancel_report).setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 finish();
             }

@@ -1,4 +1,4 @@
-package com.haowen.bugreport;
+package com.haowen.bugreport.internal;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -49,7 +49,8 @@ public class AutoSplitTextView extends TextView {
         final String rawText = tv.getText().toString();
         //paint，包含字体等信息
         final Paint tvPaint = tv.getPaint();
-        final float tvWidth = tv.getWidth() - tv.getPaddingLeft() - tv.getPaddingRight(); //控件可用宽度
+        //控件可用宽度
+        final float tvWidth = tv.getWidth() - tv.getPaddingLeft() - tv.getPaddingRight();
 
         //将原始文本按行拆分
         String[] rawTextLines = rawText.replaceAll("\r", "").split("\n");

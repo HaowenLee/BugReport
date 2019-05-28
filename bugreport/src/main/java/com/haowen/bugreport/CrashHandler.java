@@ -1,5 +1,6 @@
 package com.haowen.bugreport;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -7,15 +8,28 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Process;
 
+import com.haowen.bugreport.internal.BugReportActivity;
+
 /**
  * 异常捕获
  */
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
-    private final Context myContext;
+    @SuppressLint("StaticFieldLeak")
+    private static CrashHandler INSTANCE = new CrashHandler();
+    private Context mContext;
 
-    public CrashHandler(Context context) {
-        myContext = context;
+    private CrashHandler() {
+
+    }
+
+    public static CrashHandler getInstance() {
+        return INSTANCE;
+    }
+
+    public void init(Context context) {
+        mContext = context.getApplicationContext();
+        Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
     @Override
@@ -25,18 +39,20 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
                 new Uri.Builder().scheme(exception.getClass().getSimpleName()).build()
         );
         intent.setPackage("com.sample.bugreport");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         try {
-            myContext.startActivity(intent);
+            mContext.startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            intent = new Intent(myContext, BugReportActivity.class);
+            intent = new Intent(mContext, BugReportActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra("Thread", thread.getName() + "(" + thread.getId() + ")");
             intent.putExtra(BugReportActivity.STACKTRACE, exception);
-            myContext.startActivity(intent);
+            mContext.startActivity(intent);
         }
 
-        if (myContext instanceof Activity) {
-            ((Activity) myContext).finish();
+        if (mContext instanceof Activity) {
+            ((Activity) mContext).finish();
         }
 
         Process.killProcess(Process.myPid());

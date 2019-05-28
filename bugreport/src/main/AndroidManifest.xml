@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.haowen.bugreport">
     <application>
-        <activity android:name="com.haowen.bugreport.BugReportActivity" />
+        <activity android:name="com.haowen.bugreport.internal.BugReportActivity" />
     </application>
 </manifest>

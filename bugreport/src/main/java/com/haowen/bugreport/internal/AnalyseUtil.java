@@ -1,4 +1,4 @@
-package com.haowen.bugreport;
+package com.haowen.bugreport.internal;
 
 class AnalyseUtil {
 

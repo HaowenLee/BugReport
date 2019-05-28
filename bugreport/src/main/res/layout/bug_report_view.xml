@@ -70,7 +70,7 @@
                 android:typeface="monospace"
                 tools:text="java.lang.RuntimeException: Unable to start activity ComponentInfo{com.sample.bugreport/com.sample.bugreport.MainActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String java.lang.String.toString()' on a null object reference" />
 
-            <com.haowen.bugreport.AutoSplitTextView
+            <com.haowen.bugreport.internal.AutoSplitTextView
                 android:id="@+id/report_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
