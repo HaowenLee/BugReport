@@ -6,6 +6,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
+/**
+ * 分割词句TextView
+ */
 public class AutoSplitTextView extends TextView {
 
     private boolean mEnabled = true;
@@ -42,8 +45,10 @@ public class AutoSplitTextView extends TextView {
     }
 
     private String autoSplitText(final TextView tv) {
-        final String rawText = tv.getText().toString(); //原始文本
-        final Paint tvPaint = tv.getPaint(); //paint，包含字体等信息
+        //原始文本
+        final String rawText = tv.getText().toString();
+        //paint，包含字体等信息
+        final Paint tvPaint = tv.getPaint();
         final float tvWidth = tv.getWidth() - tv.getPaddingLeft() - tv.getPaddingRight(); //控件可用宽度
 
         //将原始文本按行拆分

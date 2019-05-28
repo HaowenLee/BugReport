@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Process;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
-
+/**
+ * 异常捕获
+ */
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
     private final Context myContext;
@@ -24,10 +24,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
                 "com.haowen.action.CRASH",
                 new Uri.Builder().scheme(exception.getClass().getSimpleName()).build()
         );
-        intent.setPackage("org.sample.bugreport");
-
-        System.out.println(thread.getName());
-        System.out.println(thread.getId());
+        intent.setPackage("com.sample.bugreport");
 
         try {
             myContext.startActivity(intent);

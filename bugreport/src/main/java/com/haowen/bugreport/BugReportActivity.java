@@ -18,7 +18,7 @@ public class BugReportActivity extends Activity {
     private TextView tvExceptionMessage;
     private TextView reportTextView;
 
-    public static final String STACKTRACE = "bugreport.stacktrace";
+    static final String STACKTRACE = "bugreport.stacktrace";
 
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
