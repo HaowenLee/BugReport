@@ -41,6 +41,11 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         intent.setPackage("com.sample.bugreport");
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
+        StackTraceElement[] stackTrace = exception.getStackTrace();
+        for (StackTraceElement s:stackTrace){
+            System.out.println(s.getMethodName());
+        }
+
         try {
             mContext.startActivity(intent);
         } catch (ActivityNotFoundException e) {
