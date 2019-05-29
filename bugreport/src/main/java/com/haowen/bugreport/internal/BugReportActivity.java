@@ -29,7 +29,7 @@ public class BugReportActivity extends Activity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        setContentView(R.layout.bug_report_view);
+        setContentView(R.layout.com_haowen_activity_bug_report);
 
         findViewByIds();
 

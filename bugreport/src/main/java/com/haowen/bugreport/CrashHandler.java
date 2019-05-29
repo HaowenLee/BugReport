@@ -2,18 +2,14 @@ package com.haowen.bugreport;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Process;
 
-import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.Utils;
 import com.haowen.bugreport.internal.BugReportActivity;
-
-import java.util.List;
 
 /**
  * 异常捕获
@@ -48,7 +44,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         StackTraceElement[] stackTrace = exception.getStackTrace();
-        for (StackTraceElement s : stackTrace) {
+        for (StackTraceElement s:stackTrace){
             System.out.println(s.getMethodName());
         }
 
@@ -66,14 +62,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             ((Activity) mContext).finish();
         }
 
-        ActivityUtils.finishAllActivities();
-        ActivityManager mActivityManager = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningAppProcessInfo> mList = mActivityManager.getRunningAppProcesses();
-        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : mList) {
-            if (runningAppProcessInfo.pid != android.os.Process.myPid()) {
-                android.os.Process.killProcess(runningAppProcessInfo.pid);
-            }
-        }
-        android.os.Process.killProcess(android.os.Process.myPid());
+        Process.killProcess(Process.myPid());
+        System.exit(0);
     }
 }

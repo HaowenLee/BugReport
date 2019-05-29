@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 28
-        versionCode 4
-        versionName "0.0.10"
+        versionCode 5
+        versionName "0.0.11"
     }
 
     buildTypes {
@@ -19,8 +19,4 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-}
-
-dependencies {
-    implementation 'com.blankj:utilcode:1.23.7'
 }
