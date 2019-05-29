@@ -42,6 +42,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#42a5f5"
+                        android:textIsSelectable="true"
                         tools:text="# main(2)" />
 
                     <TextView
@@ -49,6 +50,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#42a5f5"
+                        android:textIsSelectable="true"
                         tools:text="java.lang.ClassCastException" />
 
                     <TextView
@@ -56,25 +58,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#4c4c4c"
+                        android:textIsSelectable="true"
                         tools:text="Cannot cast android.widget.FrameLayout to android.widget.RelativeLayout" />
 
                 </LinearLayout>
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tvExceptionMessage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#42a5f5"
-                android:textStyle="bold"
-                android:typeface="monospace"
-                tools:text="java.lang.RuntimeException: Unable to start activity ComponentInfo{com.sample.bugreport/com.sample.bugreport.MainActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String java.lang.String.toString()' on a null object reference" />
 
             <com.haowen.bugreport.internal.AutoSplitTextView
                 android:id="@+id/report_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#4c4c4c"
+                android:textIsSelectable="true"
                 tools:text="Cannot cast android.widget.FrameLayout to android.widget.RelativeLayout" />
 
         </LinearLayout>
