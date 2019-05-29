@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Process;
 
-import com.blankj.utilcode.util.Utils;
 import com.haowen.bugreport.internal.BugReportActivity;
 
 /**
@@ -30,7 +29,6 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
     public void init(Context context) {
         mContext = context.getApplicationContext();
-        Utils.init(mContext);
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
@@ -44,7 +42,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         StackTraceElement[] stackTrace = exception.getStackTrace();
-        for (StackTraceElement s:stackTrace){
+        for (StackTraceElement s : stackTrace) {
             System.out.println(s.getMethodName());
         }
 
