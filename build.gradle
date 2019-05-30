@@ -9,6 +9,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.novoda:bintray-release:0.9.1'
     }
 }
 
@@ -17,8 +18,21 @@ allprojects {
         google()
         jcenter()
     }
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+    }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    userOrg = 'haowen'
+    groupId = 'com.haowen.bugreport'
+    publishVersion = '0.0.12'
+    desc = 'Crash information simple display in development environment.'
+    website = 'https://github.com/HaowenLee/BugReport'
+    licences = ['Apache-2.0']
 }
