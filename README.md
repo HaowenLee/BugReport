@@ -15,7 +15,6 @@
 dependencies {
         implementation 'com.github.HaowenLee:BugReport:0.0.12'
 }
-
 ```
 
 #### 步骤 2. 在自定义的Application里初始化
