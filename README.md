@@ -13,7 +13,7 @@
 
 ```
 dependencies {
-        implementation 'com.github.HaowenLee:BugReport:0.0.12'
+        implementation 'com.haowen.bugreport:bugreport:0.0.12'
 }
 ```
 
