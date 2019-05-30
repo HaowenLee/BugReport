@@ -18,7 +18,7 @@ dependencies {
 
 ```
 
-### 步骤 2. 在自定义的Application里初始化
+#### 步骤 2. 在自定义的Application里初始化
 
 ```
 CrashHandler.getInstance().init(this);
