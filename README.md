@@ -6,7 +6,7 @@
 
 ### 效果图
 
-<img src="https://github.com/HaowenLee/BugReport/blob/master/arts/bug_report.png" width="360" alt="BugReport"/>
+<img src="https://github.com/HaowenLee/BugReport/blob/master/arts/bug_report.png" width="300" alt="BugReport"/>
 
 
 #### 步骤 1. 在module的build.gradle添加依赖项
