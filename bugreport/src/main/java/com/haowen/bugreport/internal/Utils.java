@@ -64,7 +64,7 @@ class Utils {
      * @param context 上下文
      * @return 包名
      */
-    public static String getPackageName(Context context) {
+    static String getPackageName(Context context) {
         return context.getPackageName();
     }
 }

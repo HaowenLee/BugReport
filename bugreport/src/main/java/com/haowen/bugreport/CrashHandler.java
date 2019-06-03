@@ -15,8 +15,6 @@ import com.haowen.bugreport.internal.BugReportActivity;
  */
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
-    @SuppressLint("StaticFieldLeak")
-    private static CrashHandler INSTANCE = new CrashHandler();
     private Context mContext;
 
     private CrashHandler() {
@@ -24,7 +22,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     }
 
     public static CrashHandler getInstance() {
-        return INSTANCE;
+        return Holder.instance;
     }
 
     public void init(Context context) {
@@ -62,5 +60,10 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
         Process.killProcess(Process.myPid());
         System.exit(0);
+    }
+
+    private static class Holder {
+        @SuppressLint("StaticFieldLeak")
+        private static final CrashHandler instance = new CrashHandler();
     }
 }
