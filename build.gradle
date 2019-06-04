@@ -31,7 +31,7 @@ task clean(type: Delete) {
 ext {
     userOrg = 'haowen'
     groupId = 'com.haowen.bugreport'
-    publishVersion = '0.0.12'
+    publishVersion = '0.0.13'
     desc = 'Crash information simple display in development environment.'
     website = 'https://github.com/HaowenLee/BugReport'
     licences = ['Apache-2.0']
