@@ -22,3 +22,8 @@ dependencies {
 ```
 CrashHandler.getInstance().init(this);
 ```
+
+#### todo list
+
+- 以文件形式存储Crash信息（html格式）
+- Log日志存储（html格式）
