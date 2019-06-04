@@ -1,6 +1,7 @@
 # Android 开发环境下崩溃信息展示
 
 [![License](https://img.shields.io/badge/License%20-Apache%202-337ab7.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![JCenter](https://img.shields.io/badge/%20JCenter%20-0.0.13-5bc0de.svg)](https://bintray.com/haowen/maven/bugreport/_latestVersion)
 [![JitPack](https://jitpack.io/v/HaowenLee/BugReport.svg)](https://jitpack.io/#HaowenLee/BugReport)
 [![MinSdk](https://img.shields.io/badge/%20MinSdk%20-%2014+%20-f0ad4e.svg)](https://android-arsenal.com/api?level=14)
 
